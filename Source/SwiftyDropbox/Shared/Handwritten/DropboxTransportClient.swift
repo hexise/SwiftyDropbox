@@ -704,7 +704,7 @@ open class DownloadRequestMemory<RSerial: JSONSerializer, ESerial: JSONSerialize
                 let resultData = result.data(using: .utf8, allowLossyConversion: false)
                 let resultObject = strongSelf.responseSerializer.deserialize(SerializeUtil.parseJSON(resultData!))
 
-                completionHandler((resultObject, response.data!), nil)
+                completionHandler((resultObject, response.data ?? Data()), nil)
             }
         }))
         return self
